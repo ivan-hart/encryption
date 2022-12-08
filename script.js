@@ -2,35 +2,24 @@ function encode(message, alp) {
 
     message = message.toLowerCase()
 
-    let keyArray = []
-
-    let codeArray = []
+    let res = ""
 
     for (let i = 0; i < message.length; i++) {
 
         let key = Math.floor(Math.random() * 10) + 1
 
-        keyArray.push(key)
-
         for (let j = 0; j < alp.length; j++) {
 
             if (message[i] === alp[j]) {
 
-                codeArray.push((j + 1) * key)
+                res += ((j + 1) * key).toString() + " "
 
             }
         }
+        res += key.toString() + " "
     }
 
-    message = ''
-
-    for (let i = 0; i < codeArray.length; i++) {
-
-        message += codeArray[i] + " " + keyArray[i] + " "
-
-    }
-
-    return message
+    return res
 }
 
 function decode(message, alp) {
@@ -39,9 +28,9 @@ function decode(message, alp) {
 
     res = ''
 
-    for (let i = 0; i < message.length - 1; i+=2) {
+    for (let i = 0; i < message.length - 1; i += 2) {
 
-        let index = parseInt(message[i] / message[i+1])
+        let index = parseInt(message[i] / message[i + 1])
 
         res += alp[index - 1]
     }
@@ -51,7 +40,7 @@ function decode(message, alp) {
 
 const alp = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', ',', '.', '?', ' ']
 
-let message = "I love to code!"
+let message = "coding is fun for me but is not a possible carrer choice I would go into. I would prefer to be an IT profesional!"
 
 console.log(message);
 
